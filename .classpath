@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test/src"/>
+	<classpathentry kind="lib" path="build/jars/jarbundler.jar"/>
+	<classpathentry kind="lib" path="build/jars/jsmoothgen-ant.jar"/>
+	<classpathentry kind="lib" path="build/jars/standalone-compiler.jar"/>
+	<classpathentry kind="lib" path="FreeCol.jar"/>
+	<classpathentry kind="lib" path="jars/commons-cli-1.1.jar"/>
+	<classpathentry kind="lib" path="jars/cortado-0.6.0.jar"/>
+	<classpathentry kind="lib" path="jars/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="jars/jorbis-0.0.15.jar"/>
+	<classpathentry kind="lib" path="jars/miglayout-core-4.2.jar"/>
+	<classpathentry kind="lib" path="jars/miglayout-swing-4.2.jar"/>
+	<classpathentry kind="lib" path="test/lib/junit.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
