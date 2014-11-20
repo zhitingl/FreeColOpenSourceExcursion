@@ -1114,8 +1114,15 @@ public final class MapViewer {
      * @return The bounds <code>Rectangle</code>.
      */
     public Rectangle getTileBounds(Tile tile) {
+        // size = the size of the GUI
         Rectangle result = new Rectangle(0, 0, size.width, size.height);
         if (isTileVisible(tile)) {
+            // tile.getX() =  the x coordinate of the tile 
+            // leftColumn = "the x-coordinate of the tile that will be drawn at the left side" 
+            //              the leftmost tile on the screen
+            // tileWidth = the width of one tile
+            // leftColumnX = the offset?
+            
             result.x = ((tile.getX() - leftColumn) * tileWidth) + leftColumnX;
             /*
              * FOUND: this rectangle determines the area in which the blinking occurs.
