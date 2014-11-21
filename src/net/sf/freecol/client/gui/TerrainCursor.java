@@ -39,21 +39,21 @@ public class TerrainCursor implements ActionListener  {
     private Timer blinkTimer;
     private boolean active;
     private EventListenerList listenerList;
-    
+
 
     /**
      * Creates a new <code>TerrainCursor</code> instance.
      */
     public TerrainCursor() {
         active = true;
-        
+
         final int blinkDelay = 500; // Milliseconds
-        
+
         blinkTimer = new Timer(blinkDelay,this);
-        
+
         listenerList = new EventListenerList();
     }
-    
+
     /**
      * Returns whether this TerrainCursor is active.
      *
@@ -62,7 +62,7 @@ public class TerrainCursor implements ActionListener  {
     public boolean isActive() {
         return active;
     }
-    
+
     /**
      * Sets the active state of the TerrainCursor.
      *
@@ -71,11 +71,11 @@ public class TerrainCursor implements ActionListener  {
     public void setActive(boolean newState) {
         active = newState;
     }
-    
+
     public void startBlinking() {
         if (!blinkTimer.isRunning()) blinkTimer.start();
     }
-    
+
     public void stopBlinking() {
         if (blinkTimer.isRunning()) blinkTimer.stop();
     }
@@ -84,30 +84,30 @@ public class TerrainCursor implements ActionListener  {
         canvasX = x;
         canvasY = y;
     }
-    
+
     public int getCanvasX() {
         return canvasX;
     }
-    
+
     public int getCanvasY() {
         return canvasY;
     }
-    
+
     public void addActionListener(ActionListener listener) {
         listenerList.add(ActionListener.class, listener);
     }
-    
+
     public void removeActionListener(ActionListener listener) {
         listenerList.remove(ActionListener.class, listener);
     }
-    
+
     public void fireActionEvent(ActionEvent event) {
         for (ActionListener al
                  : listenerList.getListeners(ActionListener.class)) {
             al.actionPerformed(event);
         }
     }
-  
+
 
     // Interface ActionListener
 
@@ -118,7 +118,7 @@ public class TerrainCursor implements ActionListener  {
         active = !active;
         int eventId = active? ON : OFF;
         ActionEvent blinkEvent = new ActionEvent(this,eventId,"blink");
-        
+
         fireActionEvent(blinkEvent);
     }
 }

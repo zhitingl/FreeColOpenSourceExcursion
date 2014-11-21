@@ -573,7 +573,7 @@ public class GUI {
     public void refreshTile(Tile tile) {
         if (mapViewer == null || canvas == null) return;
         if (tile.getX() >= 0 && tile.getY() >= 0) {
-            canvas.repaint(mapViewer.getTileBounds(tile));
+            canvas.refresh();
         }
     }
 
@@ -1063,12 +1063,12 @@ public class GUI {
     public boolean canZoomOutMapControls() {
         return mapControls != null && mapControls.canZoomOutMapControls();
     }
-    
+
     public void miniMapToggleViewControls() {
         if (mapControls == null) return;
         mapControls.toggleView();
     }
-    
+
     public void miniMapToggleFogOfWarControls() {
         if (mapControls == null) return;
         mapControls.toogleFogOfWar();
@@ -1099,7 +1099,7 @@ public class GUI {
                                   Object obj, String cancelKey,
                                   List<ChoiceItem<T>> choices) {
         if (canvas == null) return null;
-        return canvas.showChoiceDialog(modal, tile, text, 
+        return canvas.showChoiceDialog(modal, tile, text,
                                        getImageIcon(obj, false),
                                        cancelKey, choices);
     }
@@ -1264,7 +1264,7 @@ public class GUI {
     public void showCaptureGoodsDialog(final Unit unit, List<Goods> gl,
                                        final String defenderId) {
         if (canvas == null) return;
-        canvas.showCaptureGoodsDialog(unit, gl, 
+        canvas.showCaptureGoodsDialog(unit, gl,
             new DialogHandler<List<Goods>>() {
                 public void handle(List<Goods> gl) {
                     igc().lootCargo(unit, gl, defenderId);
@@ -1279,7 +1279,7 @@ public class GUI {
 
     public void showChooseFoundingFatherDialog(final List<FoundingFather> ffs) {
         if (canvas == null) return;
-        canvas.showChooseFoundingFatherDialog(ffs, 
+        canvas.showChooseFoundingFatherDialog(ffs,
             new DialogHandler<FoundingFather>() {
                 public void handle(FoundingFather ff) {
                     igc().chooseFoundingFather(ffs, ff);
@@ -1532,7 +1532,7 @@ public class GUI {
                                         final Unit unit, final Tile tile,
                                         final Region region) {
         if (canvas == null) return;
-        canvas.showNameNewRegionDialog(template, defaultName, unit, 
+        canvas.showNameNewRegionDialog(template, defaultName, unit,
             new DialogHandler<String>() {
                 public void handle(String name) {
                     if (name == null || name.isEmpty()) name = defaultName;
@@ -1837,7 +1837,7 @@ public class GUI {
     }
 
     // Trivial delegations to MapViewer
-    
+
     public void centerActiveUnit() {
         if (mapViewer == null) return;
         mapViewer.centerActiveUnit();

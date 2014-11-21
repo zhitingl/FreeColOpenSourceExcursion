@@ -191,7 +191,7 @@ public final class CanvasMouseListener implements ActionListener, MouseListener 
             logger.log(Level.WARNING, "Error in mouseReleased!", ex);
         }
     }
- 
+
 
     // Interface ActionListener
 
