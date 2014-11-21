@@ -1117,35 +1117,13 @@ public final class MapViewer {
         Rectangle result = new Rectangle(0, 0, size.width, size.height);
         if (isTileVisible(tile)) {
             result.x = ((tile.getX() - leftColumn) * tileWidth) + leftColumnX;
-            /*
-             * FOUND: this rectangle determines the area in which the blinking occurs.
-             * They are trying to optimize this by not making the rectangle any bigger than
-             * necessary, but if the rectangle is calculated wrongly, the blinking does not
-             * work properly or the original bug occurs.
-             * TODO: find out why exactly it causes the bug (covers or erases previously
-             * painted lines
-             * TODO: understand how exactly result.x and result.y are calculated
-             * TODO: ensure our fixes don't break anything else (i.e. QA)
-             */
-            // result.y = ((tile.getY() - topRow) * halfHeight) + topRowY - tileHeight;
+             result.y = ((tile.getY() - topRow) * halfHeight) + topRowY - tileHeight;
             // CHANGED line from the above to this:
-            result.y = ((tile.getY() - topRow) * halfHeight) + topRowY;
             if ((tile.getY() & 1) != 0) {
                 result.x += halfWidth;
             }
-            /* the below doesn't work. (why isn't the below needed, if the above is needed?)
-             * I feel like they store their x (leftColumn, etc) and y (topRow, etc) differently;
-             * it's possible each x-unit is the entire width of a diamond but each y-unit is only
-             * half the height of a diamond - that's why they use x-unit * tileWidth but
-             * y-unit * halfHeight
-             */
-//            if ((tile.getX() & 1) != 0) {
-//                result.y += halfHeight;
-//            }
             result.width = tileWidth;
-            // result.height = tileHeight * 2;
-            // also CHANGED the above to the below because it seemed to make more sense
-            result.height = tileHeight;
+             result.height = tileHeight * 2;
         }
         return result;
     }
